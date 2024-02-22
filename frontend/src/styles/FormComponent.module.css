@@ -1,0 +1,27 @@
+.form {
+    text-align: center;
+}
+
+.input {
+    font-size: 20px;
+    padding: 8px 30px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.button {
+    font-weight: bold;
+    background-color: whitesmoke;
+    padding: 10px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px slateblue;
+    transition: box-shadow 0.2s ease;
+}
+
+.button:hover {
+    box-shadow: none;
+}
+
+.error {
+    color: red;
+}
