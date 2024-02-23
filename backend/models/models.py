@@ -14,5 +14,10 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String)
-    email = db.Column(db.String)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+
+class Sample_db_entered(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String, unique=False, nullable=False)

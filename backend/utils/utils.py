@@ -7,6 +7,9 @@ This practice reduces repetition in your code and enhances its maintainability.
 これにより、コードの重複が減り、保守性が向上します。
 """
 
-# Example utility function
-def add(x, y):
-    return x + y
+def get_column_data(table, column):
+    # 指定された列のデータを取得する
+    column_data = table.query.with_entities(column).all()
+    # データをリストに格納する
+    data_list = [getattr(data, column.key) for data in column_data]
+    return data_list

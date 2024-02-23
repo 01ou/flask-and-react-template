@@ -18,20 +18,22 @@ function useForm(endpoint) {
       console.log('Response:', response);
       setInputValue('');
       setError('');
+      setIsLoading(false);
+      return response;
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         setError(error.response.data.message);
       } else if (error.request) {
-        setError('Network Error: Unable to reach the server.'); // ネットワークエラー
+        setError('Network Error: Unable to reach the server.');
       } else {
-        // その他のエラーの場合
         setError('An error occurred. Please try again later.');
       }
       console.error('Error:', error);
+      setIsLoading(false);
+      return null; // エラーの場合はnullを返す
     }
-    setIsLoading(false);
   };
-
+  
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };

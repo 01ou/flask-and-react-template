@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './styles/App.css';
 import { FormComponent } from './components/_index';
 
+const network = 'http://127.0.0.1:5000/'
+
 function App() {
   const [data, setData] = useState({});
 
@@ -10,7 +12,7 @@ function App() {
   }, []);
 
   const fetchData = async () => {
-    const response = await fetch('/api/data');
+    const response = await fetch(network + 'data');
     const jsonData = await response.json();
     setData(jsonData);
   };
@@ -19,8 +21,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>React + Flask App</h1>
-        <p>Data from Flask API: {JSON.stringify(data)}</p>
-        <FormComponent />
+        <div>
+          <p>↓Data from Flask API↓</p>
+          <p>| {JSON.stringify(data.message)} |</p>
+        </div>
+        <FormComponent endpoint={network + 'form'} />
       </header>
     </div>
   );
